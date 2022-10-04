@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Internship-Infy</display-name>
+
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            /WEB-INF/spring-security.xml  
+            /WEB-INF/spring-database.xml       
+                               
+        </param-value>
+	</context-param>
+	<context-param>
+		<description>Location to store uploaded file</description>
+		<param-name>file-upload</param-name>
+		<param-value>
+      		D:\Libraries\intern-infy
+		</param-value>
+	</context-param>
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- REGULAR SERVLETS -->
+
+
+	<servlet>
+		<servlet-name>welcome</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>welcome</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>admindash</servlet-name>
+		<jsp-file>/adminDashboard.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admindash</servlet-name>
+		<url-pattern>/admindash</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>manageusers</servlet-name>
+		<jsp-file>/admin/manage-users.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>manageusers</servlet-name>
+		<url-pattern>/admin/manageUsers</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>viewinventory</servlet-name>
+		<jsp-file>/admin/view-inventory.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>viewinventory</servlet-name>
+		<url-pattern>/admin/viewInventory</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>adminsettings</servlet-name>
+		<jsp-file>/admin/account-settings.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminsettings</servlet-name>
+		<url-pattern>/admin/Settings</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addproduct</servlet-name>
+		<jsp-file>/seller/newproduct.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addproduct</servlet-name>
+		<url-pattern>/seller/addProduct</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>sellerhome</servlet-name>
+		<jsp-file>/seller/home.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sellerhome</servlet-name>
+		<url-pattern>/seller/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>sellerinventory</servlet-name>
+		<jsp-file>/seller/seller-inventory.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sellerinventory</servlet-name>
+		<url-pattern>/seller/inventory</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>confirm</servlet-name>
+		<jsp-file>/transaction/confirm.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>confirm</servlet-name>
+		<url-pattern>/Transaction/ConfirmOrder</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BuyNowPage</servlet-name>
+		<jsp-file>/transaction/BuyNow.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BuyNowPage</servlet-name>
+		<url-pattern>/transaction/BuyNow</url-pattern>
+	</servlet-mapping>
+
+	<!-- CLASS SERVLETS -->
+
+	<servlet>
+		<servlet-name>logoutServlet</servlet-name>
+		<servlet-class>com.TheOnlineShop.LogOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>logoutServlet</servlet-name>
+		<url-pattern>/logOutServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>logoutServlet</servlet-name>
+		<url-pattern>/inventory/logOutServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>newAccountServlet</servlet-name>
+		<servlet-class>com.TheOnlineShop.InsertIntoDBFromAdmin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>newAccountServlet</servlet-name>
+		<url-pattern>/admin/NewAccountFromAdmin</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>submitNewProduct</servlet-name>
+		<servlet-class>com.TheOnlineShop.addProductIntoDB</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>submitNewProduct</servlet-name>
+		<url-pattern>/seller/addProductIntoDB</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>registerUserSelf</servlet-name>
+		<servlet-class>com.TheOnlineShop.InsertIntoDBFromSelf</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registerUserSelf</servlet-name>
+		<url-pattern>/InsertIntoDBFromSelf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>registerUserSelf</servlet-name>
+		<url-pattern>/inventory/InsertIntoDBFromSelf</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>uploadpic</servlet-name>
+		<servlet-class>com.TheOnlineShop.ImageUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadpic</servlet-name>
+		<url-pattern>/seller/upload</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>addToCart</servlet-name>
+		<servlet-class>com.TheOnlineShop.AddToCart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addToCart</servlet-name>
+		<url-pattern>/inventory/AddToCart</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>getCartItemsNumber</servlet-name>
+		<servlet-class>com.TheOnlineShop.GetCart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getCartItemsNumber</servlet-name>
+		<url-pattern>/inventory/GetCart</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>getCartItemsNumber</servlet-name>
+		<url-pattern>/GetCart</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>viewcart</servlet-name>
+		<servlet-class>com.TheOnlineShop.ViewCart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>viewcart</servlet-name>
+		<url-pattern>/ViewCart</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>address</servlet-name>
+		<servlet-class>com.TheOnlineShop.SubmitAddress</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>address</servlet-name>
+		<url-pattern>/transaction/SubmitAddress</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>buynow</servlet-name>
+		<servlet-class>com.TheOnlineShop.BuyNow</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>buynow</servlet-name>
+		<url-pattern>/transaction/BuyNowClass</url-pattern>
+	</servlet-mapping>
+
+</web-app>
